@@ -1,25 +1,11 @@
-import os
 import pandas as pd
-from collections import defaultdict
-from pptx import Presentation
-from pptx.enum.shapes import MSO_SHAPE_TYPE
-from PyPDF2 import PdfMerger  # OK usar no Linux para unir PDFs
 
-# === CONFIGURAÇÕES ===
-excel_path = "Skills.xlsx"
-template_path = "CV.pptx"
-output_dir = "output"
-output_path = "CV_limpo.pptx"
-pptx_dir = os.path.join(output_dir, "pptx")
-pdf_dir = os.path.join(output_dir, "pdf")
-final_pdf = os.path.join(output_dir, "CVs_final.pdf")
-
-os.makedirs(pptx_dir, exist_ok=True)
-os.makedirs(pdf_dir, exist_ok=True)
-
-# === LER EXCEL ===
-df = pd.read_excel(excel_path)
-df.columns = df.columns.str.strip()  # remove espaços extras
-grouped = defaultdict(list)
-for _, row in df.iterrows():
-    grouped[row["Worker Name"]].append(row)
+def ler_dados_excel(caminho_ficheiro: str) -> pd.DataFrame:
+    try:
+        df = pd.read_excel(caminho_ficheiro, engine="openpyxl")
+        print(f"✅ Excel lido com sucesso: {caminho_ficheiro}")
+        print(f"🔢 Número de linhas lidas: {len(df)}")
+        return df
+    except Exception as e:
+        print(f"❌ Erro ao ler o Excel: {e}")
+        return pd.DataFrame()
