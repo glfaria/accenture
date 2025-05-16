@@ -46,10 +46,10 @@ def create_individual_presentation(employee, idx, output_folder="Employee_Presen
     font.color.rgb = BLUE_COLOR
 
     # Nome
-    name_box = slide.shapes.add_textbox(Inches(2.2), Inches(0.4), Inches(6), Inches(0.8))
+    name_box = slide.shapes.add_textbox(Inches(1.7), Inches(0.4), Inches(6), Inches(0.8))
     name_frame = name_box.text_frame
     name_p = name_frame.paragraphs[0]
-    name_p.alignment = PP_ALIGN.CENTER
+    name_p.alignment = PP_ALIGN.LEFT
     name_run = name_p.add_run()
     name_run.text = employee["First Name Last Name"]
     name_font = name_run.font
@@ -58,10 +58,10 @@ def create_individual_presentation(employee, idx, output_folder="Employee_Presen
     name_font.color.rgb = DARK_GRAY
 
     # Cargo
-    job_box = slide.shapes.add_textbox(Inches(2.2), Inches(1.1), Inches(6), Inches(0.5))
+    job_box = slide.shapes.add_textbox(Inches(1.7), Inches(1.1), Inches(6), Inches(0.5))
     job_frame = job_box.text_frame
     job_p = job_frame.paragraphs[0]
-    job_p.alignment = PP_ALIGN.CENTER
+    job_p.alignment = PP_ALIGN.LEFT
     job_run = job_p.add_run()
     job_run.text = employee["Job Title / Role"]
     job_font = job_run.font

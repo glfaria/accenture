@@ -35,7 +35,7 @@ def create_formatted_cv_presentation(data_df, output_path="Employee_Profiles.ppt
         # Placeholder círculo azul (igual)
         left = Inches(0.4)
         top = Inches(0.4)
-        width = height = Inches(1)
+        width = height = Inches(1.5)
 
         circle = slide.shapes.add_shape(
             MSO_SHAPE.OVAL,
@@ -46,7 +46,7 @@ def create_formatted_cv_presentation(data_df, output_path="Employee_Profiles.ppt
         circle.line.width = Pt(1.5)
 
         # Texto do placeholder dentro do círculo
-        pic_text = slide.shapes.add_textbox(left, top + Inches(0.3), width, Inches(0.5))
+        pic_text = slide.shapes.add_textbox(left, top + Inches(0.5), width, Inches(0.5))
         pic_text_frame = pic_text.text_frame
         pic_text_frame.word_wrap = True
         pic_text_frame.auto_size = MSO_AUTO_SIZE.TEXT_TO_FIT_SHAPE
@@ -109,7 +109,7 @@ def create_formatted_cv_presentation(data_df, output_path="Employee_Profiles.ppt
         profile_content_font.color.rgb = DARK_GRAY
 
         # Education header - diminuir para 18pt
-        edu_header = slide.shapes.add_textbox(Inches(0.4), Inches(2.8), Inches(2), Inches(0.4))
+        edu_header = slide.shapes.add_textbox(Inches(0.4), Inches(3.3), Inches(2), Inches(0.4))
         edu_frame = edu_header.text_frame
         edu_p = edu_frame.paragraphs[0]
         edu_run = edu_p.add_run()
@@ -121,7 +121,7 @@ def create_formatted_cv_presentation(data_df, output_path="Employee_Profiles.ppt
         edu_font.color.rgb = PURPLE_COLOR
 
         # Education content - diminuir para 9pt
-        edu_content = slide.shapes.add_textbox(Inches(0.4), Inches(3.2), Inches(5), Inches(1.0))
+        edu_content = slide.shapes.add_textbox(Inches(0.4), Inches(3.7), Inches(5), Inches(1.0))
         edu_content_frame = edu_content.text_frame
         edu_content_frame.word_wrap = True
         edu_content_p = edu_content_frame.paragraphs[0]
@@ -133,7 +133,7 @@ def create_formatted_cv_presentation(data_df, output_path="Employee_Profiles.ppt
         edu_content_font.color.rgb = DARK_GRAY
 
         # Skills header - Arial 18pt, negrito, roxo
-        skills_header = slide.shapes.add_textbox(Inches(0.4), Inches(3.8), Inches(5), Inches(0.4))
+        skills_header = slide.shapes.add_textbox(Inches(0.4), Inches(4.8), Inches(5), Inches(0.4))
         skills_frame = skills_header.text_frame
         skills_p = skills_frame.paragraphs[0]
         skills_run = skills_p.add_run()
@@ -156,7 +156,7 @@ def create_formatted_cv_presentation(data_df, output_path="Employee_Profiles.ppt
             rows=rows_needed,
             cols=1,
             left=Inches(0.5),
-            top=Inches(4.2),
+            top=Inches(5.2),
             width=Inches(2.2),
             height=Inches(1.5)
         ).table
@@ -168,7 +168,7 @@ def create_formatted_cv_presentation(data_df, output_path="Employee_Profiles.ppt
                 rows=len(skills_list) - max_rows_per_col,
                 cols=1,
                 left=Inches(3.0),
-                top=Inches(4.2),
+                top=Inches(5.2),
                 width=Inches(2.2),
                 height=Inches(1.5)
             ).table
