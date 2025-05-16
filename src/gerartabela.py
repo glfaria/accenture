@@ -47,13 +47,22 @@ def gerar_resumo_trabalhadores(df: pd.DataFrame) -> pd.DataFrame:
         profile = gerar_perfil(row_exemplo)
         skills = gerar_skills(grupo.to_dict("records"))
 
+        # Corrige o test de NaN
+        experience = row_exemplo.get("Relevant Experience")
+        if pd.isna(experience):
+            experience = "Informação disponível sob pedido."
+
+        education = row_exemplo.get("Education")
+        if pd.isna(education):
+            education = "Informação disponível sob pedido."
+
         resumo.append({
             "First Name Last Name": nome,
             "Job Title / Role": job_title,
             "Profile": profile,
-            "Education": "Informação disponível sob pedido.",
+            "Education": education,
             "Relevant Skills & Qualifications": skills,
-            "Relevant Experience": "Informação disponível sob pedido."
+            "Relevant Experience": experience
         })
 
     return pd.DataFrame(resumo)
